@@ -1,0 +1,36 @@
+body {
+    background-color: #10191a;
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 30%;
+}
+
+.posts {
+    background-color: #0b0b0b;
+    border-radius: 8px;
+    padding: 10px;
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+
+.post {
+    text-align: left;
+    padding: 10px;
+    display: grid;
+    word-break: break-word;
+}
+.post:not(:last-child) {
+    border-bottom: 1px solid #444;
+}
+
+.author {
+    font-weight: bold;
+}
