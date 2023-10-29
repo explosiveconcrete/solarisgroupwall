@@ -19,6 +19,7 @@ body {
     padding: 10px;
     max-height: 50vh;
     overflow-y: scroll;
+    margin-bottom: 15px;
 }
 
 .post {
@@ -33,4 +34,11 @@ body {
 
 .author {
     font-weight: bold;
+}
+
+.btn {
+    text-decoration: underline;
+}
+.btn:hover {
+    cursor: pointer;
 }

@@ -39,6 +39,7 @@ server.get("/posts", (req, res) => {
     let postGenCount = Math.floor((Date.now()-lastGen)/genInterval)*genCount
     for (let newPost of gen(fetchedPosts,postGenCount)) posts.unshift(newPost)
     posts.length = Math.min(posts.length,200)
+    for (let post in posts) { if (posts[post].author.startsWith("undefined")) posts.splice(post) }
     if (postGenCount > 0) {
         lastGen = Date.now()
         try {
@@ -67,11 +68,5 @@ server.get("/getdl", (req, res) => {
     }) 
 })
 
-// function a() {
-//     for (let newPost of gen(fetchedPosts,1)) posts.unshift(newPost)
-//     setTimeout(a,15000)
-// }
-
-// a()
 server.listen(port)
 console.log(`Listening on port ${port}`)
