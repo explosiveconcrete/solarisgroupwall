@@ -29,7 +29,7 @@ function a() {
     for (let newPost of gen(fetchedPosts,1)) posts.unshift(newPost)
     setTimeout(a,15000)
 }
-
+//test
 a()
 server.listen(port)
 console.log(`Listening on port ${port}`)
