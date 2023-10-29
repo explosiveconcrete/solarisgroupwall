@@ -38,6 +38,7 @@ server.disable("etag")
 server.get("/posts", (req, res) => {
     let postGenCount = Math.floor((Date.now()-lastGen)/genInterval)*genCount
     for (let newPost of gen(fetchedPosts,postGenCount)) posts.unshift(newPost)
+    posts.length = Math.min(posts.length,200)
     if (postGenCount > 0) {
         lastGen = Date.now()
         try {
