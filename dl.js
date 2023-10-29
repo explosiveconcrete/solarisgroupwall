@@ -21,6 +21,12 @@ function fetchPosts() {
         resp.on('end', () => {
             if (resp.statusCode != 200) {
                 console.log(`Request error ${resp.statusCode}: ${JSON.parse(data).errors[0].message}`)
+                if (posts.length > 0) {
+                    console.log(`Saving existing database`)
+                    postsCollection.set("fetchedPosts", {
+                        data: posts
+                    })
+                } 
             } else {
                 let postData = JSON.parse(data)
                 for (let postKey in postData.data) {
