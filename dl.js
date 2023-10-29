@@ -10,6 +10,8 @@ if (postFetchCount % 100 != 0) console.warn(`Post fetch count not divisible by 1
 const urlRoot = `https://${apiURL}/v2/groups/${groupId}/wall/posts?limit=100&sortOrder=Desc`
 let url = urlRoot
 
+let postsCollection = global.db.collection("data")
+
 function fetchPosts() {
     https.get(url, (resp) => {
         let data = '';
@@ -30,8 +32,12 @@ function fetchPosts() {
                 if (posts.length < postFetchCount) fetchPosts()
                 else {
                     console.log("Saving post database...")
-                    fs.writeFileSync("fetchedPosts.json", JSON.stringify(posts))}
-                }      
+                    postsCollection.set("fetchedPosts", {
+                        data: posts
+                    })
+                    //fs.writeFileSync("fetchedPosts.json", JSON.stringify(posts))
+                }
+            }      
         });
     }).on("error", (err) => {
         console.log(`Request error: ${err.message}`);
