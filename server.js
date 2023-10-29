@@ -1,6 +1,7 @@
 const express = require('express')
 const fs = require("fs")
 const gen = require("./gen")
+const cors = require("cors")
 const port = 3000
 const genInterval = 60000
 const genCount = 1
@@ -31,7 +32,7 @@ try {
 }
 
 let server = express()
-server.use(express.static(__dirname + '/web'))
+server.use(cors({origin: "*"}), express.static(__dirname + '/web'))
 server.disable("etag")
 
 server.get("/posts", (req, res) => {
