@@ -3,7 +3,7 @@ const fs = require("fs")
 
 const apiURL = "groups.roproxy.com" //implemented to deal with ratelimit issues of roblox's api endpoints
 const groupId = 9486047
-const postFetchCount = 2000
+const postFetchCount = 1000
 
 let posts = []
 if (postFetchCount % 100 != 0) console.warn(`Post fetch count not divisible by 100! Will round up to ${Math.ceil(postDownloadCount/100)*100}`)
